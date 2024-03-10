@@ -88,13 +88,32 @@ const Middle = (props) => {
     alert(`Gift amount stored ${giftAmount}`)
     handleCloseGiftPopup();
   };
+  const dummyPosts = [
+    {
+      username: 'JohnDoe',
+      text: 'This is a sample post by JohnDoe!',
+      image: 'https://via.placeholder.com/40',
+      likes: 10,
+      dislikes: 2,
+      comments: ['Nice post!', 'Keep it up!'],
+    },
+    {
+      username: 'AliceSmith',
+      text: 'Hello from AliceSmith!',
+      image: 'https://via.placeholder.com/40',
+      likes: 7,
+      dislikes: 1,
+      comments: ['Great to see you here!', 'Awesome post!'],
+    },
+  ];
+
 
   return (
     <div className="container mx-auto px-4">
       <div className="flex flex-row items-center mb-4">
         <img
-          className="w-12 h-12 rounded-full mr-4"
-          src="https://via.placeholder.com/40"
+          className="w-24 h-24 rounded-full mr-4"
+          src='https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGZxNTVjYTk4enhhZTdjZGRmYWZjdXo3emNqdmptanh5MHZxc2VrciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10fS0TJxfFRDLW/giphy.gif'
           alt=""
         />
         <input
@@ -124,32 +143,80 @@ const Middle = (props) => {
             src={previewImage}
             alt="Preview Image"
           />
-          <span className="text-gray-600">Previewing Image...</span>
+          <span className="text-gray-400 text-2xl">Previewing Image...</span>
         </div>
       )}
       <div className="w-full flex justify-center ">
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full"
+          className="relative left-[135px] bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-16 rounded-full mx-auto"
           onClick={handleClick}
         >
           Post
         </button>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-14">
+      <div className="mt-14">
+        {/* Map through the dummy posts array */}
+        {dummyPosts.map((post, index) => (
+          <div key={index} className="bg-white p-4 px-[20px] rounded-lg shadow-md mb-4">
+            <div className="flex items-start">
+              <div className="flex flex-col">
+                <div className="flex flex-row">
+                  <img
+                    className="w-24 h-24 rounded-full mr-4"
+                    src={post.image}
+                    alt=""
+                  />
+                  <p className="text-gray-800 mt-4 font-bold">{post.username}</p>
+                </div>
+                <p className="text-gray-600 mt-7 mx-2">{post.text}</p>
+                <div className="flex justify-between items-center mt-4">
+                  <div>
+                    <button
+                      className="m-3 text-gray-600 hover:text-blue-500"
+                      onClick={() => handleLike(index)}
+                    >
+                      <FontAwesomeIcon icon={faThumbsUp} />&nbsp;{post.likes}
+                    </button>
+                    <button
+                      className="m-3 text-gray-600 hover:text-blue-500"
+                      onClick={() => handleDislike(index)}
+                    >
+                      <FontAwesomeIcon icon={faThumbsDown} />&nbsp;{post.dislikes}
+                    </button>
+                  </div>
+                  <div>
+                    <button className="mr-4 text-gray-600 hover:text-blue-500" onClick={handleOpenGiftPopup}><FontAwesomeIcon icon={faGift} />&nbsp;</button>
+                    <span className="text-gray-600">
+                      <FontAwesomeIcon icon={faComments} />&nbsp;{post.comments.length}
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  {post.comments.map((comment, commentIndex) => (
+                    <p key={commentIndex} className="text-gray-600">{comment}</p>
+                  ))}
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
         {postData.map((post, index) => (
           <div key={index} className="bg-white p-4 px-[20px] rounded-lg shadow-md mb-4">
             <div className="flex items-start">
               <div className="flex flex-col">
                 <div className='flex flex-row'>
                   <img
-                    className="w-12 h-12 rounded-full mr-4"
-                    src="https://via.placeholder.com/40"
+                    className="w-24 h-24 rounded-full mr-4"
+                    src='https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGZxNTVjYTk4enhhZTdjZGRmYWZjdXo3emNqdmptanh5MHZxc2VrciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10fS0TJxfFRDLW/giphy.gif'
                     alt=""
                   />
-                  <p className="text-gray-800 font-bold">{props.username}</p>
+                  <p className="text-gray-800 mt-4 font-bold">{props.username}</p>
                 </div>
-                <p className="text-gray-600">{post.text}</p>
+                <p className="text-gray-600 mt-7 mx-2">{post.text}</p>
                 {post.image && (
                   <img
                     className="w-full rounded-lg mt-4"
@@ -160,13 +227,13 @@ const Middle = (props) => {
                 <div className="flex justify-between items-center mt-4">
                   <div>
                     <button
-                      className="mr-4 text-gray-600 hover:text-blue-500"
+                      className="m-3 text-gray-600 hover:text-blue-500"
                       onClick={() => handleLike(index)}
                     >
                       <FontAwesomeIcon icon={faThumbsUp} />&nbsp;{post.likes}
                     </button>
                     <button
-                      className="mr-4 text-gray-600 hover:text-blue-500"
+                      className="m-3 text-gray-600 hover:text-blue-500"
                       onClick={() => handleDislike(index)}
                     >
                       <FontAwesomeIcon icon={faThumbsDown} />&nbsp;{post.dislikes}
@@ -239,7 +306,8 @@ const Middle = (props) => {
 };
 
 Middle.defaultProps = {
-  username: '<USER>',
+  Image: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGZxNTVjYTk4enhhZTdjZGRmYWZjdXo3emNqdmptanh5MHZxc2VrciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10fS0TJxfFRDLW/giphy.gif',
+  username: 'ContextVectors',
 }
 
 export default Middle;

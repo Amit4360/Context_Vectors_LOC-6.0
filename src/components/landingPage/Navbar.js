@@ -39,7 +39,7 @@ const Navbar = () => {
           <h2 className="font-semibold text-5xl mt-14">Dungeon</h2>
         </Link>
       </div>
-      <div className="" ref={fav}>
+      <div className="mt-5" ref={fav}>
         <div className="favourite-link" ref={login}>
           <Link to="login">Login</Link>
         </div>

@@ -7,8 +7,8 @@ import eth from './eth.json'
 const Wallet = (props) => {
   return (
     <>
-    <div className='w-full flex flex-col'>
-        <div className='fixed z-25'>
+    <div className='w-full flex flex-col sticky'>
+        <div className=''>
                 <div className="flex flex-col w-full justify-center items-center h-[360px] drop-shadow-xl bg-white pt-[20px] rounded-2xl pd-[35px] px-[25px]">
             <div className='text-[16px] font-bold font-sans text-shadow-lg text-slate-700'>My Wallet <FontAwesomeIcon icon={faCaretDown} /></div>
             <Lottie
@@ -24,7 +24,7 @@ const Wallet = (props) => {
                     &nbsp;&nbsp;
                     <div className=''>{(props.eth * props.rate).toFixed(5)} USD</div>
             </div>
-            <div className='mt-4 flex w-full flex-row items-center justify-evenly text-white'>
+            <div className='mt-4 mb-20 flex w-full flex-row items-center justify-evenly text-white'>
                     <button className='rounded-lg bg-blue-600 drop-shadow-lg px-[18px] py-2'><FontAwesomeIcon icon={faSquareArrowUpRight} />&nbsp;Buy</button>
                     <button className='rounded-lg bg-red-600 drop-shadow-lg px-[18px] py-2'><FontAwesomeIcon icon={faSquareArrowUpRight} />&nbsp;Sell</button>
             </div>
@@ -32,7 +32,6 @@ const Wallet = (props) => {
         </div>
     </div>
      <div className='flex flex-col justify-center items-center'>
-        <div className="flex flex-col w-full justify-center items-center h-[360px]"></div>
         <div className='h-1 my-[10px] bg-slate-600 w-full rounded-full drop-shadow-sm '></div>
         <div className='w-full flex items-center justify-center'>
             <div className='m-4 py-2 px-4 bg-slate-200 w-2/3 rounded-xl text-center font-semibold drop-shadow-xl'>Your Transacations</div>
@@ -51,7 +50,7 @@ const Wallet = (props) => {
 
 Wallet.defaultProps = {
     eth : '2.3467',
-    rate : '1.2345',
+    rate : '1234552515',
     address: 'rgerw3428296w4youaheuergtdqalieryuh',
 }
 
