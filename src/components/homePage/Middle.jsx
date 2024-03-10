@@ -97,14 +97,6 @@ const Middle = (props) => {
       dislikes: 2,
       comments: ['Nice post!', 'Keep it up!'],
     },
-    {
-      username: 'AliceSmith',
-      text: 'Hello from AliceSmith!',
-      image: 'https://via.placeholder.com/40',
-      likes: 7,
-      dislikes: 1,
-      comments: ['Great to see you here!', 'Awesome post!'],
-    },
   ];
 
 
